@@ -1,4 +1,4 @@
-![sample1](./slide_imgs/slide1.jpg)
+![sample1](./slide_imgs/slide1.JPG)
 ![sample1](./slide_imgs/slide2.jpg)
 ![sample1](./slide_imgs/slide3.jpg)
 ![sample1](./slide_imgs/slide4.jpg)

@@ -25,7 +25,7 @@ def get_color(img):
     return centers[0].astype(np.int32)[::-1]
 
 
-img_name = 'sss4'
+img_name = 'ex6'
 img_path = 'sample_images/'+img_name+'.jpg'
 
 img_path = os.path.join(img_path)

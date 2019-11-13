@@ -43,7 +43,7 @@ def upper_lower_detection(img):
     clean_img = cv2.merge([r,g,b])
     rec_img = cv2.merge([r,g,b])
 
-    num_obj = len([x for x in prediction[0]['scores'].tolist() if x>0.7])
+    num_obj = len([x for x in prediction[0]['scores'].tolist() if x>0.6])
 
     cropping = {}
 

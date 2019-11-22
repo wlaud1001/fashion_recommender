@@ -21,7 +21,7 @@ import cv2
 
 def upper_lower_detection(img):
     device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
-    detection_model_path = './models/deepfashion2_data_2_6000_model.pth'
+    detection_model_path = './models/deepfashion2_model.pth'
     num_classes = 14
 
     model = get_faster_rcnn(num_classes)
@@ -43,7 +43,7 @@ def upper_lower_detection(img):
     clean_img = cv2.merge([r,g,b])
     rec_img = cv2.merge([r,g,b])
 
-    num_obj = len([x for x in prediction[0]['scores'].tolist() if x>0.6])
+    num_obj = len([x for x in prediction[0]['scores'].tolist() if x>0.75])
 
     cropping = {}
 

@@ -25,7 +25,7 @@ def get_color(img):
     return centers[0].astype(np.int32)[::-1]
 
 
-img_name = 'ex6'
+img_name = 'sample7'
 img_path = 'sample_images/'+img_name+'.jpg'
 
 img_path = os.path.join(img_path)
@@ -42,7 +42,7 @@ img = img.mul(255).permute(1, 2, 0).byte().numpy()
 
 upper_categorise = [1,2]
 category_list = ['short_sleeve_top', 'long_sleeve_top','short_sleeve_outwear','long_sleeve_outwear','vest','sling','shorts','trousers','skirt','short_sleeve_dress','long_sleeve_dress','vest_dress','sling_dress' ]
-for idx in range(2):
+for idx in range(len(cropping)):
     cropped_img = cropping[idx]['cropping']
     color = get_color(cropped_img)
     cropped_img = Image.fromarray(cropped_img)

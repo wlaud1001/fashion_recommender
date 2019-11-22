@@ -43,9 +43,6 @@ def remove_background(img):
 
     b, g, r = cv2.split(removed)
     rimg = cv2.merge([r, g, b])
-    cv2.imshow('img', rimg)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
 
 
     return removed

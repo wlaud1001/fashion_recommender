@@ -19,7 +19,12 @@ def upper_pattern_detect_model(num_classes = 5):
     model = models.resnet50(pretrained=True)
     num_features = model.fc.in_features
     model.fc = nn.Linear(num_features, num_classes)
+    return model
 
+def upper_category_detect_model(num_classes = 4):
+    model = models.resnet50(pretrained=True)
+    num_features = model.fc.in_features
+    model.fc = nn.Linear(num_features, num_classes)
     return model
 
 def get_instance_segmentation_model(num_classes):
@@ -38,5 +43,4 @@ def get_instance_segmentation_model(num_classes):
     model.roi_heads.mask_predictor = MaskRCNNPredictor(in_features_mask,
                                                        hidden_layer,
                                                        num_classes)
-
     return model

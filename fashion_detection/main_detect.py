@@ -1,5 +1,6 @@
 from upper_lower_detection import *
 from upper_pattern_classification import *
+from upper_category_detection import *
 from remove_background import *
 from PIL import Image
 import os, cv2
@@ -25,7 +26,7 @@ def get_color(img):
     return centers[0].astype(np.int32)[::-1]
 
 
-img_name = 'sample7'
+img_name = '001787'
 img_path = 'sample_images/'+img_name+'.jpg'
 
 img_path = os.path.join(img_path)
@@ -40,7 +41,7 @@ img = trans(img)
 img = img.mul(255).permute(1, 2, 0).byte().numpy()
 
 
-upper_categorise = [1,2]
+upper_categorise = [2,4]
 category_list = ['short_sleeve_top', 'long_sleeve_top','short_sleeve_outwear','long_sleeve_outwear','vest','sling','shorts','trousers','skirt','short_sleeve_dress','long_sleeve_dress','vest_dress','sling_dress' ]
 for idx in range(len(cropping)):
     cropped_img = cropping[idx]['cropping']
@@ -55,6 +56,10 @@ for idx in range(len(cropping)):
         print(upper_pattern_pred)
         cv2.putText(img, upper_pattern_pred, (boxes[0]+15, boxes[1]-30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (200, 200, 0), 2)
 
+        upper_category_pred = upper_category_detection(cropped_img)
+        print(upper_category_pred)
+        cv2.putText(img, upper_category_pred, (boxes[0] + 15, boxes[1] + 20), cv2.FONT_HERSHEY_SIMPLEX, 0.7,
+                    (200, 200, 0), 2)
 
     img = cv2.rectangle(img, (boxes[0], boxes[1]), (boxes[2], boxes[3]), (0, 255, 0), 2)
 
